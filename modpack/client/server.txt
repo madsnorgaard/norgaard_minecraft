@@ -1,8 +1,8 @@
-Minecraft Server Server
-=======================
-Address: 5.189.183.167:25565
-Version: 1.21.5
+Minecraft Server Connection
+===========================
+Address: your-server-ip:25565
+Example: 192.168.1.100:25565
+Version: 1.21.5 Fabric
 Mode: Creative
 
-Direct connect: 5.189.183.167:25565
-Local name: minecraft-server:25565
+Replace "your-server-ip" with actual server IP address

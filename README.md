@@ -1,92 +1,46 @@
-# Minecraft Server 1.21.5
+# Minecraft Server 1.21.5 - Dockerized with Modpack Management
 
-Dockerized Minecraft server with automated modpack distribution system.
+A complete Minecraft server setup with 90+ mods, automated modpack distribution, and easy management tools.
 
 ## Features
 - 🐳 Docker-based server deployment
-- 📦 Automatic modpack generation
-- 🎮 CurseForge integration
-- 💾 Automated backups
-- 🎯 Fun player commands
-- 🔧 50+ pre-configured mods
+- 📦 90+ carefully selected mods
+- 🎮 Automatic modpack generation for CurseForge
+- 💾 Backup and restore functionality
+- 🔧 Easy mod management system
 
 ## Quick Start
 
 ### Server Setup
 ```bash
-# Clone repository
-git clone https://github.com/yourusername/minecraft-server.git
-cd minecraft-server
-
-# Configure environment
+git clone https://github.com/madsnorgaard/norgaard_minecraft.git
+cd norgaard_minecraft
 cp .env.example .env
-
-# Start server
 docker compose up -d
 ```
 
-### Modpack Distribution
-```bash
-# Generate modpack for players
-./scripts/sync_modpack.sh
+### Player Setup
+1. Download latest modpack from [Releases](https://github.com/madsnorgaard/norgaard_minecraft/releases)
+2. Import to CurseForge
+3. Connect to `your-server-ip:25565`
 
-# Create CurseForge package
-./scripts/create_curseforge_pack.sh
+## Server Management
+
+### Modpack Manager
+```bash
+./scripts/modpack_manager.sh  # Interactive mod management
+./scripts/backup.sh           # Backup world
+./scripts/sync_modpack.sh     # Update modpack
 ```
 
-## Player Setup
-
-1. Install [CurseForge](https://www.curseforge.com/download/app)
-2. Import the modpack zip file
-3. Launch Minecraft through CurseForge
-4. Connect to server
-
-## Configuration
-
-Edit `docker-compose.yml` to customize:
-- Server name
-- Game mode
-- Difficulty
-- Player limits
-
-## Scripts
-
-- `backup.sh` - Backup world data
-- `sync_modpack.sh` - Sync server mods to client pack
-- `player_fun.sh` - Fun commands for players
-- `create_curseforge_pack.sh` - Create CurseForge import
+## Mod List
+See [MOD_LIST.md](MOD_LIST.md) for complete list of 90 included mods.
 
 ## Requirements
-
 - Docker & Docker Compose
+- 10GB+ RAM recommended
 - Minecraft Java Edition 1.21.5
-- Fabric Loader
+- Fabric Loader 0.18.1
 
 ## License
-
 MIT
-
-## Current Server Status
-- **Version**: Minecraft 1.21.5 (Fabric)
-- **Mods**: 90 mods installed and tested
-- **Mode**: Creative with keep-inventory
-- **Status**: Production ready
-
-## For Players
-Download the complete modpack from:
-- `/modpack/client/` directory (89 mods)
-- Or use CurseForge import with provided zip
-
-## Repository Structure
-```
- docker-compose.yml      # Server configuration
- modpack/               # Player modpack files
-   └── client/mods/       # 89 client mods
- modpacks/              # Saved modpack configurations
-   └── Base modpack/      # 90-mod backup
- scripts/               # Management tools
-   ├── modpack_manager.sh # Interactive mod manager
-   ├── backup.sh          # World backup
-   └── sync_modpack.sh    # Modpack sync
- data/                  # Server data (gitignored)
-```
