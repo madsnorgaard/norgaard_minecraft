@@ -1,0 +1,9 @@
+INSTALLATION INSTRUCTIONS
+=========================
+1. Install Fabric 1.21.5 first from: https://fabricmc.net/use/installer/
+2. Copy the "mods" folder to your .minecraft folder
+   - Windows: Press Win+R, type %appdata%\.minecraft\
+   - Mac: ~/Library/Application Support/minecraft/
+   - Linux: ~/.minecraft/
+3. Launch Minecraft with Fabric 1.21.5 profile
+4. Connect to server
