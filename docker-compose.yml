@@ -6,12 +6,12 @@ services:
     container_name: minecraft-server
     ports:
       - "25565:25565"
-      - "25575:25575"  # RCON port
+      - "25575:25575"
     environment:
       EULA: "TRUE"
       TYPE: "FABRIC"
-      VERSION: "1.21.5"  # Fixed to stable version
-      FABRIC_LAUNCHER_VERSION: "1.21.5"
+      VERSION: "1.21.5"
+      FABRIC_LAUNCHER_VERSION: "latest"
       MEMORY: "${MEMORY:-10G}"
       ENABLE_RCON: "true"
       RCON_PASSWORD: "${RCON_PASSWORD:-minecraft}"
@@ -34,9 +34,11 @@ services:
       ENABLE_WHITELIST: "FALSE"
       OPS: "AdminPlayer"
       SERVER_NAME: "${SERVER_NAME:-Minecraft Server}"
-      MOTD: "§d§lCreative Server§r\n§6Version 1.21.4"
+      MOTD: "§d§lCreative Server§r\n§6Version 1.21.5"
+      REMOVE_OLD_MODS: "TRUE"
     volumes:
       - ./data:/data
+      - ./modpacks:/modpacks:ro
     restart: unless-stopped
     stdin_open: true
     tty: true
