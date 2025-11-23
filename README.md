@@ -65,3 +65,28 @@ Edit `docker-compose.yml` to customize:
 ## License
 
 MIT
+
+## Current Server Status
+- **Version**: Minecraft 1.21.5 (Fabric)
+- **Mods**: 90 mods installed and tested
+- **Mode**: Creative with keep-inventory
+- **Status**: Production ready
+
+## For Players
+Download the complete modpack from:
+- `/modpack/client/` directory (89 mods)
+- Or use CurseForge import with provided zip
+
+## Repository Structure
+```
+ docker-compose.yml      # Server configuration
+ modpack/               # Player modpack files
+   └── client/mods/       # 89 client mods
+ modpacks/              # Saved modpack configurations
+   └── Base modpack/      # 90-mod backup
+ scripts/               # Management tools
+   ├── modpack_manager.sh # Interactive mod manager
+   ├── backup.sh          # World backup
+   └── sync_modpack.sh    # Modpack sync
+ data/                  # Server data (gitignored)
+```
