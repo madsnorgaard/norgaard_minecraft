@@ -1,0 +1,81 @@
+name: Build and Release Modpack
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/mods/**'
+      - 'docker-compose.yml'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+jobs:
+  build-modpack:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y zip rsync
+    
+    - name: Sync modpack
+      run: |
+        chmod +x scripts/sync_modpack.sh
+        ./scripts/sync_modpack.sh || echo "Sync completed with warnings"
+        
+    - name: Prepare CurseForge import
+      run: |
+        # Create CurseForge-compatible structure
+        cat > modpack/manifest.json << 'JSON'
+        {
+          "minecraft": {
+            "version": "1.21.5",
+            "modLoaders": [{
+              "id": "fabric-0.18.1",
+              "primary": true
+            }]
+          },
+          "manifestType": "minecraftModpack",
+          "manifestVersion": 1,
+          "name": "Minecraft Server",
+          "version": "1.0.0",
+          "author": "Dad",
+          "overrides": "overrides"
+        }
+        JSON
+        
+        # Create overrides directory for mods
+        mkdir -p modpack/overrides
+        cp -r modpack/client/mods modpack/overrides/
+        
+    - name: Create modpack zip
+      run: |
+        cd modpack
+        zip -r ../MinecraftModpack-CurseForge.zip . -x "client/*" "server/*"
+        cd ..
+        ls -lh MinecraftModpack-CurseForge.zip
+        
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
+      with:
+        tag_name: modpack-${{ github.run_number }}
+        name: Minecraft Server Modpack
+        body: |
+          ## 🎮 Minecraft Server Modpack for CurseForge
+          
+          ### Quick Install:
+          1. Download `MinecraftModpack-CurseForge.zip`
+          2. Open CurseForge → Create Custom Profile → Import
+          3. Select the zip file
+          4. Play!
+          
+          ### Server: `minecraft-server:25565`
+        files: |
+          MinecraftModpack-CurseForge.zip
+          EASY_SETUP_GUIDE.md
+        draft: false
+        prerelease: false

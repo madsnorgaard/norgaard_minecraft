@@ -1,0 +1,17 @@
+{
+  "baseModLoader": {
+    "forgeVersion": "",
+    "name": "fabric-0.18.1",
+    "type": "fabric",
+    "downloadUrl": "https://fabricmc.net/",
+    "filename": "fabric-loader-0.18.1-1.21.5.jar",
+    "minecraftVersion": "1.21.5"
+  },
+  "modpackOverrides": [
+    "mods"
+  ],
+  "isUnlocked": true,
+  "javaArgsOverride": "-Xmx4G",
+  "name": "Minecraft Server",
+  "notes": "Dad's Minecraft Server Modpack"
+}

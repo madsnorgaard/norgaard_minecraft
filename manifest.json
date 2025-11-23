@@ -1,0 +1,14 @@
+{
+  "minecraft": {
+    "version": "1.21.5",
+    "modLoaders": [{
+      "id": "fabric-0.18.1",
+      "primary": true
+    }]
+  },
+  "manifestType": "minecraftModpack",
+  "manifestVersion": 1,
+  "name": "Minecraft Server Mods",
+  "version": "1.0.0",
+  "author": "Dad"
+}
