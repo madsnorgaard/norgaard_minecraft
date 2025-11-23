@@ -1,1 +1,8 @@
-Server IP: 5.189.183.167:25565
+Aurora's Kingdom Server
+=======================
+Address: 5.189.183.167:25565
+Version: 1.21.5
+Mode: Creative
+
+Direct connect: 5.189.183.167:25565
+Local name: theazanianprepper:25565

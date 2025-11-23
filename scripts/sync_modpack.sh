@@ -7,22 +7,14 @@ echo "🔄 Syncing modpack..."
 SERVER_MODS="data/mods"
 CLIENT_MODS="modpack/client/mods"
 
-# Get version from docker-compose, default to 1.21.5 if LATEST
-MODPACK_VERSION=$(grep 'VERSION:' docker-compose.yml | cut -d'"' -f2)
+# Get version from docker-compose - fixed to handle properly
+MODPACK_VERSION=$(grep 'VERSION:' docker-compose.yml | head -1 | cut -d'"' -f2)
 if [ "$MODPACK_VERSION" = "LATEST" ] || [ -z "$MODPACK_VERSION" ]; then
   MODPACK_VERSION="1.21.5"
 fi
 
 # Create directories
 mkdir -p $CLIENT_MODS
-
-# Check if server mods exist
-if [ ! -d "$SERVER_MODS" ] || [ -z "$(ls -A $SERVER_MODS 2>/dev/null)" ]; then
-  echo "⚠️  No mods found in $SERVER_MODS"
-  echo "Creating placeholder..."
-  mkdir -p $SERVER_MODS
-  echo "Place mod JAR files here" > $SERVER_MODS/README.txt
-fi
 
 # Copy all mods (excluding server-only ones)
 echo "📦 Copying mods..."
@@ -32,7 +24,7 @@ if [ -d "$SERVER_MODS" ]; then
     --exclude="*lithium*.jar" \
     --exclude="*ferritecore*.jar" \
     --exclude="README.txt" \
-    $SERVER_MODS/ $CLIENT_MODS/ 2>/dev/null || true
+    $SERVER_MODS/ $CLIENT_MODS/ 2>/dev/null || cp -r $SERVER_MODS/* $CLIENT_MODS/ 2>/dev/null || true
 fi
 
 # Generate modpack metadata

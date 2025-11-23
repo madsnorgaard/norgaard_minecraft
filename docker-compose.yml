@@ -11,7 +11,7 @@ services:
       EULA: "TRUE"
       TYPE: "FABRIC"
       VERSION: "1.21.5"  # Fixed to stable version
-      FABRIC_LAUNCHER_VERSION: "latest"
+      FABRIC_LAUNCHER_VERSION: "1.21.5"
       MEMORY: "${MEMORY:-10G}"
       ENABLE_RCON: "true"
       RCON_PASSWORD: "${RCON_PASSWORD:-minecraft}"
