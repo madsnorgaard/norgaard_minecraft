@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  minecraft:
+    image: itzg/minecraft-server:latest
+    container_name: minecraft-server
+    ports:
+      - "25565:25565"
+      - "25575:25575"  # RCON port
+    environment:
+      EULA: "TRUE"
+      TYPE: "FABRIC"
+      VERSION: "1.21.4"  # Fixed to stable version
+      FABRIC_LAUNCHER_VERSION: "latest"
+      MEMORY: "${MEMORY:-10G}"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: "${RCON_PASSWORD:-minecraft}"
+      RCON_CMDS_STARTUP: |
+        defaultgamemode creative
+        gamemode creative @a
+        difficulty peaceful
+        gamerule keepInventory true
+        gamerule doDaylightCycle true
+        gamerule doWeatherCycle true
+        gamerule mobGriefing false
+        time set day
+      MODE: "creative"
+      ALLOW_FLIGHT: "TRUE"
+      SPAWN_PROTECTION: "0"
+      MAX_PLAYERS: "10"
+      VIEW_DISTANCE: "12"
+      TZ: "Africa/Johannesburg"
+      GUI: "FALSE"
+      ENABLE_WHITELIST: "FALSE"
+      OPS: "dalordcraft"
+      SERVER_NAME: "${SERVER_NAME:-Aurora's Kingdom}"
+      MOTD: "§d§lAurora's Creative Kingdom§r\n§6Version 1.21.4"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
+    stdin_open: true
+    tty: true

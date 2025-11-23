@@ -1,0 +1,37 @@
+# World data
+data/cold/
+data/world*/
+data/logs/
+data/crash-reports/
+data/.cache/
+data/.fabric/
+data/libraries/
+data/versions/
+data/config/
+data/journeymap/
+data/mods/
+data/defaultconfigs/
+
+# Runtime files
+data/*.jar
+data/*.json
+!data/whitelist.json
+!data/ops.json
+data/*.txt
+data/*.bat
+data/*.sh
+data/*.ps1
+
+# Environment
+.env
+
+# Backups
+backups/
+*.tar.gz
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
