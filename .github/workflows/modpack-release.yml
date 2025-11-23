@@ -17,37 +17,60 @@ jobs:
     
     - name: Sync modpack
       run: |
+        chmod +x scripts/sync_modpack.sh
         ./scripts/sync_modpack.sh
         
     - name: Get version
       id: version
       run: |
+        # Extract version from docker-compose.yml
         VERSION=$(grep 'VERSION:' docker-compose.yml | cut -d'"' -f2)
+        
+        # If VERSION is "LATEST" or empty, use a default
+        if [ "$VERSION" = "LATEST" ] || [ -z "$VERSION" ]; then
+          VERSION="1.21.5"
+        fi
+        
+        # Create a date-based tag if version is generic
+        if [ "$VERSION" = "LATEST" ]; then
+          TAG="latest-$(date +%Y%m%d)"
+        else
+          TAG="v$VERSION-$(date +%Y%m%d)"
+        fi
+        
         echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "tag=$TAG" >> $GITHUB_OUTPUT
         
     - name: Create modpack zip
       run: |
         cd modpack
-        zip -r ../AurorasKingdom-${{ steps.version.outputs.version }}.zip .
+        zip -r ../AurorasKingdom-modpack.zip .
         
     - name: Create Release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: v${{ steps.version.outputs.version }}-$(date +%Y%m%d)
-        name: Aurora's Kingdom Modpack ${{ steps.version.outputs.version }}
+        tag_name: ${{ steps.version.outputs.tag }}
+        name: Aurora's Kingdom Modpack
         body: |
           ## 🎮 Aurora's Kingdom Modpack
           
           **Minecraft Version:** ${{ steps.version.outputs.version }}
           **Fabric Loader:** 0.18.1
+          **Released:** $(date +"%Y-%m-%d")
           
-          ### Installation:
-          1. Download the zip file
-          2. Extract it
+          ### 📥 Installation:
+          1. Download `AurorasKingdom-modpack.zip`
+          2. Extract the zip file
           3. Run `install.bat` (Windows) or `install.sh` (Mac/Linux)
-          4. Launch Minecraft with Fabric ${{ steps.version.outputs.version }}
+          4. Launch Minecraft with Fabric
           
-          ### Server Address:
-          Check `server.txt` in the modpack
+          ### 🎯 Server Connection:
+          Check `server.txt` in the modpack for server address
+          
+          ### ⚠️ Requirements:
+          - Minecraft Java Edition
+          - Fabric Loader for Minecraft ${{ steps.version.outputs.version }}
         files: |
-          AurorasKingdom-*.zip
+          AurorasKingdom-modpack.zip
+        draft: false
+        prerelease: false
