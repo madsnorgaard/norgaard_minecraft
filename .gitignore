@@ -1,34 +1,18 @@
-# World data
-data/cold/
-data/world*/
-data/logs/
-data/crash-reports/
-data/.cache/
-data/.fabric/
-data/libraries/
-data/versions/
-data/config/
-data/journeymap/
-data/mods/
-data/defaultconfigs/
-
-# Runtime files
-data/*.jar
-data/*.json
-!data/whitelist.json
-!data/ops.json
-data/*.txt
-data/*.bat
-data/*.sh
-data/*.ps1
-
 # Environment
 .env
+
+# World data
+data/
+!data/.gitkeep
 
 # Backups
 backups/
 *.tar.gz
 *.zip
+
+# Releases
+releases/*.zip
+!releases/.gitkeep
 
 # OS files
 .DS_Store
@@ -36,18 +20,7 @@ Thumbs.db
 *.tmp
 *.bak
 
-# Modpack releases
-releases/*.zip
-
-# But keep release directory
-!releases/.gitkeep
-.env
-data/whitelist.json
-data/ops.json
-
-# Personal files
-*whitelist.json
-*ops.json
-*usercache.json
-*AURORA*
-*aurora*
+# Personal configs
+whitelist.json
+ops.json
+usercache.json
