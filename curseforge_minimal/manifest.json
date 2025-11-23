@@ -1,0 +1,22 @@
+{
+  "minecraft": {
+    "version": "1.21.5",
+    "modLoaders": [{
+      "id": "fabric-0.18.1",
+      "primary": true
+    }]
+  },
+  "manifestType": "minecraftModpack",
+  "manifestVersion": 1,
+  "name": "Server Pack Test",
+  "version": "1.0.0",
+  "author": "Admin",
+  "files": [
+    {
+      "projectID": 238222,
+      "fileID": 5908475,
+      "required": true
+    }
+  ],
+  "overrides": "overrides"
+}

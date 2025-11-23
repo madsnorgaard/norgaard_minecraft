@@ -9,8 +9,8 @@
   "manifestType": "minecraftModpack",
   "manifestVersion": 1,
   "name": "Minecraft Server Modpack",
-  "version": "1.3.0",
-  "author": "Server Admin",
+  "version": "1.0.0",
+  "author": "Admin",
   "files": [],
   "overrides": "overrides"
 }
