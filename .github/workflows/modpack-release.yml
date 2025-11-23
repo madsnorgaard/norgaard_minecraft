@@ -1,0 +1,53 @@
+name: Build and Release Modpack
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/mods/**'
+      - 'docker-compose.yml'
+  workflow_dispatch:
+
+jobs:
+  build-modpack:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Sync modpack
+      run: |
+        ./scripts/sync_modpack.sh
+        
+    - name: Get version
+      id: version
+      run: |
+        VERSION=$(grep 'VERSION:' docker-compose.yml | cut -d'"' -f2)
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        
+    - name: Create modpack zip
+      run: |
+        cd modpack
+        zip -r ../AurorasKingdom-${{ steps.version.outputs.version }}.zip .
+        
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ steps.version.outputs.version }}-$(date +%Y%m%d)
+        name: Aurora's Kingdom Modpack ${{ steps.version.outputs.version }}
+        body: |
+          ## 🎮 Aurora's Kingdom Modpack
+          
+          **Minecraft Version:** ${{ steps.version.outputs.version }}
+          **Fabric Loader:** 0.18.1
+          
+          ### Installation:
+          1. Download the zip file
+          2. Extract it
+          3. Run `install.bat` (Windows) or `install.sh` (Mac/Linux)
+          4. Launch Minecraft with Fabric ${{ steps.version.outputs.version }}
+          
+          ### Server Address:
+          Check `server.txt` in the modpack
+        files: |
+          AurorasKingdom-*.zip

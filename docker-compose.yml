@@ -10,7 +10,7 @@ services:
     environment:
       EULA: "TRUE"
       TYPE: "FABRIC"
-      VERSION: "1.21.4"  # Fixed to stable version
+      VERSION: "1.21.5"  # Fixed to stable version
       FABRIC_LAUNCHER_VERSION: "latest"
       MEMORY: "${MEMORY:-10G}"
       ENABLE_RCON: "true"

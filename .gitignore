@@ -35,3 +35,9 @@ backups/
 Thumbs.db
 *.tmp
 *.bak
+
+# Modpack releases
+releases/*.zip
+
+# But keep release directory
+!releases/.gitkeep
