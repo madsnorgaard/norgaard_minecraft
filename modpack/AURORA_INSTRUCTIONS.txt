@@ -1,0 +1,34 @@
+==========================================
+
+1. DOWNLOAD the file: AurorasKingdom-1.21.5.zip
+
+2. EXTRACT IT:
+   - Right-click the zip file
+   - Choose "Extract All"
+   - Pick your Desktop
+
+3. INSTALL FABRIC FIRST:
+   - Go to: https://fabricmc.net/use/installer/
+   - Download the installer
+   - Run it and select "1.21.5"
+   - Click Install
+
+4. INSTALL THE MODS:
+   - Open the extracted folder
+   - Double-click "install.bat"
+   - Press any key when done
+
+5. START MINECRAFT:
+   - Open Minecraft Launcher
+   - At the bottom left, select "fabric-loader-1.21.5"
+   - Click PLAY
+
+6. JOIN DAD'S SERVER:
+   - Click Multiplayer
+   - Click "Add Server"
+   - Name: Dad's Server
+   - Address: theazanianprepper:25565
+   - Click Done
+   - Double-click to join!
+
+If it doesn't work, tell Dad!
