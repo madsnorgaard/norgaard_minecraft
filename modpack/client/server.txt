@@ -1,7 +1,1 @@
-Aurora's Kingdom Server
-=======================
-Address: YOUR_SERVER_IP:25565
-Version: 1.21.5
-Mode: Creative
-
-Replace YOUR_SERVER_IP with actual IP
+Server IP: 5.189.183.167:25565

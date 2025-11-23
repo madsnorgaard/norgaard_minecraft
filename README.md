@@ -113,3 +113,9 @@ Currently running Fabric with:
 - GeckoLib (for animations)
 
 To add more mods, place `.jar` files in `data/mods/` and restart.
+
+## 📦 Latest Modpack
+
+[Download AurorasKingdom-1.21.5
+latest-20251123](releases/AurorasKingdom-1.21.5
+latest-20251123.zip)
