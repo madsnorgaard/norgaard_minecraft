@@ -6,7 +6,6 @@ services:
     container_name: minecraft-server
     ports:
       - "25565:25565"
-      - "25575:25575"
     environment:
       EULA: "TRUE"
       TYPE: "FABRIC"
@@ -35,7 +34,7 @@ services:
       OPS: "AdminPlayer"
       SERVER_NAME: "${SERVER_NAME:-Minecraft Server}"
       MOTD: "§d§lCreative Server§r\n§6Version 1.21.5"
-      REMOVE_OLD_MODS: "TRUE"
+      REMOVE_OLD_MODS: "FALSE"
     volumes:
       - ./data:/data
       - ./modpacks:/modpacks:ro

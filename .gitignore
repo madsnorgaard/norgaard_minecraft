@@ -24,3 +24,5 @@ Thumbs.db
 whitelist.json
 ops.json
 usercache.json
+__pycache__/
+*.pyc
