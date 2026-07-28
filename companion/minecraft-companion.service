@@ -1,0 +1,13 @@
+[Unit]
+Description=Vogteren - Minecraft AI companion
+After=docker.service network-online.target
+
+[Service]
+WorkingDirectory=%h/minecraft-companion
+EnvironmentFile=%h/minecraft-companion/.env
+ExecStart=%h/minecraft-companion/venv/bin/python %h/minecraft-companion/keeper.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
